@@ -1,0 +1,95 @@
+<head>
+	<title>memorizit</title>
+	<link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+	<link href="http://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+</body>
+
+<template name="AddQuestion">
+	<div class="well well-lg">
+		<form>
+			<h1>Add a question</h1>
+			<div class="add-question-section">
+				<label>Question</label>
+				<textarea class="u-full-width question-input" placeholder="Insert the question here"></textarea>
+				<label>Alternatives</label>
+				<div id="alternatives"></div>
+				<button class="button button-primary add-alternative">Add</button>
+				<label>Type</label>
+				<input type="text" class="type-input" placeholder="Insert the type">
+				<label>Answer</label>
+				<input type="text" class="answer-input" placeholder="Insert the answer">
+				<textarea rows="10" class="u-full-width comment-input" placeholder="Comments"></textarea>
+			</div>
+			<div class="button-wrapper">
+				<button class="button button-primary add-question">Save</button>
+				<a class="button button-primary" href="/Home">Back</a>
+			</div>
+		</form>
+	</div>
+</template>
+
+<template name="questionAndAnswers">
+	<div class='question-and-answer-section'>
+		<p>Question type: {{type}}</p>
+		<label>Question:</label>
+		<p class="question">{{question}}</p>
+		<ol type='A'>
+			{{#each alternatives}}
+				<li>{{this}}</li>
+			{{/each}}
+		</ol>
+		<p><span style='color:blue'>answer: </span><span class="answer">{{answer}}</span></p>
+		<label>Comment:</label>
+		<p>{{comment}}</p>
+	</div>
+</template>
+
+<template name="RunMemorizit">
+	<h1>Memorizit</h1>
+	<a class="button button-primary" href="/Home">Back</a>
+</template>
+
+<template name="ListQuestion">
+	<div class="well well-lg">
+		<h1>Questions and answers</h1>
+		{{#each questions}}
+			{{> questionAndAnswers}}
+		{{/each}}
+	</div>
+</template>
+
+<template name="Home">
+	<h1 style="font-family:'Great Vibes'; font-size:11rem; text-align:center; margin-top:10vh">Memorizit</h1>
+	<div class="menu-home" style="text-align:center; margin-top:3vh">
+		<ul style="list-style:none">
+			<li>
+				<a class="button button-primary button-fixed-width" href="/AddQuestion">Add Question</a>
+			</li>
+			<li>
+				<a class="button button-primary button-fixed-width" href="/RunMemorizit">Memorize</a>
+			</li>
+			<li>
+				<a class="button button-primary button-fixed-width" href="/ListQuestion">List of questions</a>
+			</li>
+			<li>
+				<a class="button button-primary button-fixed-width" href="#">My status</a>
+			</li>
+		</ul>
+	</div>
+</template>
+
+<template name="LandingPage">
+	<div class="section hero">
+	    <div class="container">
+	      <div class="row">
+	        <div class="two-half column">
+	          <h4 class="hero-heading">Lets make it easier to remember</h4>
+	          <a class="button button-primary" href="/Home">Try Memorizit</a>
+	        </div>
+	      </div>
+	    </div>
+    </div>
+</template>
