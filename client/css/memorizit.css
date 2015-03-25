@@ -11,6 +11,11 @@ label{
 	font-size: 2.5rem;
 }
 
+.page-content{
+	margin-top: 40px;
+	margin-left: 40px;
+}
+
 .hero{
 	margin-top:25vh;
 }

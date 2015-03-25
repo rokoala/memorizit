@@ -1,0 +1,30 @@
+<form style="margin:35px">
+	<h1>Multiple Choice question</h1>
+	<h2>Please fill the form</h2>
+
+	<div class="add-question-section">
+		<label>Question</label>
+		<textarea class="u-full-width question-input" ng-model="question.value" placeholder="Insert the question here"></textarea>
+		
+		<label>Alternatives</label>
+		<div id="alternatives"></div>
+		<ul style="list-style-type:upper-alpha">
+			<li ng-repeat="alternative in alternatives track by $index">
+				<input type="text" ng-model="alternative" placeholder="Insert alternative here">
+				<i class="fa fa-times" ng-click="alternatives.pop()"></i>
+			</li>
+		</ul>
+		<button class="button button-primary add-alternative" ng-click="alternatives.push('')">Add</button>
+		<label>Answer</label>
+		<select ng-repeat="altenative in alternatives">
+			<option value="alternatives.indexOf(alternative)">{{altenative}}</option>
+		</select>
+		<label>Labels</label>
+		<input type="text" class="type-input" ng-model="question.labels" placeholder="Insert labels here">
+		<textarea rows="10" class="u-full-width comment-input" ng-model="question.comments" placeholder="Insert comments here"></textarea>
+	</div>
+	<div class="button-wrapper">
+		<button class="button button-primary" ng-click="save(question)" >Save</button>
+		<a class="button button-primary" href="/question/add">Back</a>
+	</div>
+</form>

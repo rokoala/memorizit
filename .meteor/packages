@@ -8,5 +8,7 @@ meteor-platform
 autopublish
 insecure
 fezvrasta:bootstrap-material-design
-iron:router
 skeleton:skeleton
+natestrauser:font-awesome
+urigo:angular
+angularui:angular-ui-router

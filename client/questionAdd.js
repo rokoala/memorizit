@@ -3,17 +3,25 @@ Template.AddQuestion.events({
 	'click button.add-question':function(e,t){
 		e.preventDefault();
 
+		mapIndexToLetter = {
+			0:"A",1:"B",2:"C",3:"D"
+		}
+
 		var _question = t.find('.question-input').value;
 		var _answer = t.find('.answer-input').value;
-		var _type = t.find('.type-input').value;
+		var _label = t.find('.label-input').value;
 		var _comment = t.find('.comment-input').value;
-		var _alternatives = []
 
-		$("#alternatives").children().each(function(e,t){
-			 _alternatives.push($(t).children(":first-child").val()); 
+		var _alternatives = [];
+
+		$("#alternatives").children().each(function(i,t){
+			 var alt = {}
+			 alt.value = $(t).children(":first-child").val();
+			 alt.letter = mapIndexToLetter[i];
+			 _alternatives.push(alt);
 		});
 
-		Questions.insert({question:_question,alternatives:_alternatives,answer:_answer,type:_type,comment:_comment});
+		Questions.insert({question:_question,alternatives:_alternatives,answer:_answer,label:_label,comment:_comment});
 		$("#alternatives").children().remove();
 
 		return false;
@@ -24,10 +32,10 @@ Template.AddQuestion.events({
 
 		var $alternative = $("<div/>");
 
-		var $input = $("<input/>").attr({"type":"text","placeholder":"insert alternative"}).addClass("u-full-width");
+		var $input = $("<input/>").attr({"type":"text","placeholder":"insert alternative"}).css({'width':'95%'});
 		$alternative.append($input);
 
-		var $remove = $("<button>remove</button>").css({float:'right','margin-bottom':'35px'}).click(function(e){ e.preventDefault(); $(this).parent().children().remove(); });
+		var $remove = $("<i/>").addClass("fa fa-times").css({'margin-bottom':'35px','margin-left':'5px'}).click(function(e){ e.preventDefault(); $(this).parent().children().remove(); });
 		$alternative.append($remove);
 
 		$("#alternatives").append($alternative);
