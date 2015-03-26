@@ -1,0 +1,16 @@
+<form style="margin:35px;">
+	<div ng-repeat="question in questions">
+		<div class='question-and-answer-section'>
+			<p>Question type: {{question.type}}</p>
+			<label>Question:</label>
+			<p class="question">{{question.value}}</p>
+			<ul style="list-style-type:upper-alpha">
+				<li ng-repeat="alternative in question.alternatives">{{alternative.value}}</li>
+			</ul>
+			<p><span style='color:blue'>answer: </span><span class="answer">{{question.answer | letter | uppercase}}</span></p>
+			<label>Comment:</label>
+			<p>{{question.comments}}</p>
+		</div>
+	</div>
+	<a href="/memorizit">Back to Menu</a>
+</form>

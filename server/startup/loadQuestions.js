@@ -1,6 +1,6 @@
 Meteor.startup(function () {
     if (Questions.find().count() === 0) {
-
+      /*
       var parties = [
         {'name': 'Dubstep-Free Zone',
           'description': 'Can we please just for an evening not listen to dubstep.'},
@@ -12,5 +12,7 @@ Meteor.startup(function () {
 
       for (var i = 0; i < parties.length; i++)
         Questions.insert({name: parties[i].name, description: parties[i].description});
+
+      */
    }
 });

@@ -20,6 +20,11 @@ angular.module('memorizit').config([ '$urlRouterProvider', '$stateProvider', '$l
 		    url: '/question/add/multiple',
 		    templateUrl: 'client/questions/multiple/views/addQuestionMultiple.ng.html',
 		    controller:'AddMultipleQuestionCtrl'
+		})
+		.state('listQuestion', {
+		    url: '/question/list',
+		    templateUrl: 'client/questions/views/listQuestion.ng.html',
+		    controller:'ListQuestionCtrl'
 		});
 
 		$urlRouterProvider.otherwise("/welcome");

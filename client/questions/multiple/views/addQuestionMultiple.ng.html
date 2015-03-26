@@ -1,27 +1,32 @@
 <form style="margin:35px">
-	<h1>Multiple Choice question</h1>
+	<h1>Multiple Choice Question</h1>
 	<h2>Please fill the form</h2>
 
 	<div class="add-question-section">
-		<label>Question</label>
-		<textarea class="u-full-width question-input" ng-model="question.value" placeholder="Insert the question here"></textarea>
-		
-		<label>Alternatives</label>
-		<div id="alternatives"></div>
-		<ul style="list-style-type:upper-alpha">
-			<li ng-repeat="alternative in alternatives track by $index">
-				<input type="text" ng-model="alternative" placeholder="Insert alternative here">
-				<i class="fa fa-times" ng-click="alternatives.pop()"></i>
-			</li>
-		</ul>
-		<button class="button button-primary add-alternative" ng-click="alternatives.push('')">Add</button>
-		<label>Answer</label>
-		<select ng-repeat="altenative in alternatives">
-			<option value="alternatives.indexOf(alternative)">{{altenative}}</option>
-		</select>
-		<label>Labels</label>
-		<input type="text" class="type-input" ng-model="question.labels" placeholder="Insert labels here">
-		<textarea rows="10" class="u-full-width comment-input" ng-model="question.comments" placeholder="Insert comments here"></textarea>
+		<div class="row">
+		    <div class="nine columns">
+		    	<label>Question</label>
+		    	<textarea class="u-full-width question-input" ng-model="question.value" placeholder="Insert the question here"></textarea>
+		    	<label>Alternatives</label>
+				<div id="alternatives"></div>
+				<ul style="list-style-type:upper-alpha">
+					<li ng-repeat="alternative in question.alternatives track by $id(alternative)">
+						<input type="text" style="width:72%" ng-model="alternative.value" placeholder="Insert an alternative">
+						<i class="fa fa-times" ng-click="question.alternatives.pop()"></i>
+						<button style="margin-left:20px" class="btn-set-answer" ng-click="setAnswer($index,$event)">Set as answer</button>
+					</li>
+				</ul>
+				<button ng-click="addAlternative()"><i class="fa fa-plus-square"></i> question</button>
+			</div>
+			<div class="three columns">
+				<label>Exam name</label>
+				<input type="text" class="u-full-width question-input" placeholder="ex.: Vunesp-2014"></input>
+				<label>Labels</label>
+				<selectize config="tagsConfig" class="u-full-width" placeholder="Create labels" options="myOptions" ng-model="question.labels"></selectize>
+				<label>Comments</label>
+				<textarea rows="10" class="u-full-width comment-input" style="height:450px" ng-model="question.comments" placeholder="You can describe more about this question here"></textarea>
+			</div>
+		</div>
 	</div>
 	<div class="button-wrapper">
 		<button class="button button-primary" ng-click="save(question)" >Save</button>
