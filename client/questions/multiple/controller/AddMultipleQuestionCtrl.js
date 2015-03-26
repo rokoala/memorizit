@@ -1,4 +1,4 @@
-angular.module('memorizit').controller('AddMultipleQuestionCtrl',['$scope','$meteor',function($scope,$meteor){
+angular.module('memorizit').controller('AddMultipleQuestionCtrl',['$scope','$meteor','$location',function($scope,$meteor,$location){
 
 	$scope.questions = $meteor.collection(Questions);
 
@@ -21,6 +21,7 @@ angular.module('memorizit').controller('AddMultipleQuestionCtrl',['$scope','$met
 
 	$scope.save = function(question){
 		$scope.questions.save(question);
+		$location.path( "/question/add" );
 	}
 
 	$scope.setAnswer = function($index,$event){
