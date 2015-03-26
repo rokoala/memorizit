@@ -15,7 +15,7 @@ angular.module('memorizit').controller('AddMultipleQuestionCtrl',['$scope','$met
 	        return {
 	            value: input,
 	            text: input
-	        }
+	        } 
 	    }
   	}
 
